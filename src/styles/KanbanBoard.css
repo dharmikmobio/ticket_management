@@ -1,0 +1,62 @@
+/* KanbanBoard.css */
+
+.kanban-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.kanban-column {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.kanban-column:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.kanban-column h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+    min-width: 150px;
+}
+
+.kanban-ticket {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-ticket:hover {
+    background-color: #f0f0f0;
+}
+
+.kanban-ticket.closed {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.kanban-ticket-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-ticket-label {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
