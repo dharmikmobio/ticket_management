@@ -23,9 +23,9 @@ const KanbanBoard = ({ tickets }) => {
     // Find the ticket being dragged by its ID
     const ticket = tickets.find((ticket) => ticket.id === ticketId);
     // Set the selected ticket if it's not closed
-    if (ticket.status !== "closed") {
-      setSelectedTicket(ticket);
-    }
+    // if (ticket.status !== "closed") {
+    setSelectedTicket(ticket);
+    // }
   };
 
   // Function to handle the end of dragging a ticket
@@ -74,12 +74,10 @@ const KanbanBoard = ({ tickets }) => {
                 <div
                   key={index}
                   id={ticket.id}
-                  draggable={ticket.status !== "closed"}
+                  draggable
                   onDragStart={(e) => handleDragStart(e, ticket.id)}
                   onDragEnd={handleDragEnd}
-                  className={`kanban-ticket ${
-                    ticket.status === "closed" && "closed"
-                  }`}
+                  className={`kanban-ticket ${ticket.status}`}
                 >
                   <div>
                     <Text strong>Name: </Text>

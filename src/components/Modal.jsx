@@ -27,7 +27,7 @@ const CustomModal = ({ isOpen, closeModal, title, form }) => {
       <Modal title={title} open={isOpen} footer={null} onCancel={closeModal}>
         <Form layout="vertical" form={form} onFinish={handleSubmitClick}>
           <Form.Item
-            label="Customer Name"
+            label="Department"
             name="name"
             rules={[
               {
@@ -39,7 +39,7 @@ const CustomModal = ({ isOpen, closeModal, title, form }) => {
             <Input placeholder="Enter Customer Name" />
           </Form.Item>
           <Form.Item
-            label="Title"
+            label="Job Title"
             name="title"
             rules={[
               {
@@ -61,10 +61,10 @@ const CustomModal = ({ isOpen, closeModal, title, form }) => {
             ]}
           >
             <Select placeholder="Select Status">
-              <Option value="assignee">Assignee</Option>
-              <Option value="in_progress">In Progress</Option>
-              <Option value="resolved">Resolved</Option>
-              <Option value="deployed">Deployed</Option>
+              <Option value="Draft">Draft</Option>
+              <Option value="Active">Active</Option>
+              <Option value="Inactive">Inactive</Option>
+              {/* <Option value="closed">closed</Option> */}
               <Option value="closed">Closed</Option>
             </Select>
           </Form.Item>
