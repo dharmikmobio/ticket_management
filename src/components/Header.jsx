@@ -31,9 +31,9 @@ const Header = ({ title }) => {
   return (
     <div className="header-container">
       <Title level={3}>{title}</Title>
-      {/* <Button type="primary" onClick={handleClick}>
+      <Button type="primary" onClick={handleClick}>
         {Buttons.CREATE_TICKET}
-      </Button> */}
+      </Button>
       <CustomModal
         isOpen={isOpen}
         closeModal={handleClose}

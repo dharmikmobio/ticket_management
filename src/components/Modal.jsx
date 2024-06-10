@@ -1,24 +1,16 @@
 import React from "react";
-
-// Antd Components
 import { Form, Input, Modal, Select, Button } from "antd";
+import { Buttons, Messages } from "../utils/constants";
+import useStore from "../zustand/useStore";
+
 const { Option } = Select;
 
-// Constants
-import { Buttons, Messages } from "../utils/constants";
-
-// Redux
-import { useDispatch } from "react-redux";
-import { addTicket } from "../redux/reducers/ticket";
-
 const CustomModal = ({ isOpen, closeModal, title, form }) => {
-  const dispatch = useDispatch();
+  const addTicket = useStore((state) => state.addTicket);
 
-  // Function to handle form submission
   const handleSubmitClick = async (values) => {
-    const ticketData = values;
-    ticketData.id = Math.floor(Math.random() * 1000);
-    dispatch(addTicket(ticketData));
+    const ticketData = { ...values, id: Math.floor(Math.random() * 1000) };
+    addTicket(ticketData);
     closeModal();
   };
 
@@ -64,7 +56,6 @@ const CustomModal = ({ isOpen, closeModal, title, form }) => {
               <Option value="Draft">Draft</Option>
               <Option value="Active">Active</Option>
               <Option value="Inactive">Inactive</Option>
-              {/* <Option value="closed">closed</Option> */}
               <Option value="closed">Closed</Option>
             </Select>
           </Form.Item>

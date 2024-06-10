@@ -1,13 +1,9 @@
 import React from "react";
-
-// Custom Components
 import KanbanBoard from "./KanbanBoard";
-
-// Redux
-import { useSelector } from "react-redux";
+import useStore from "../zustand/useStore";
 
 const DashBoard = () => {
-  const ticketData = useSelector((state) => state.tickets.ticketData);
+  const ticketData = useStore((state) => state.ticketData);
 
   return (
     <div>

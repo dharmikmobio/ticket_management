@@ -1,54 +1,32 @@
 import React, { useState } from "react";
-
-// Redux
-import { useDispatch } from "react-redux";
-import { updateTicketList } from "../redux/reducers/ticket";
-
-// Antd Components
 import { Typography } from "antd";
-const { Title, Text } = Typography;
-
-// Constants
+import useStore from "../zustand/useStore";
+import "../styles/KanbanBoard.css";
 import { statusColumn } from "../utils/constants";
 
-// styles
-import "../styles/KanbanBoard.css";
+const { Title, Text } = Typography;
 
 const KanbanBoard = ({ tickets }) => {
-  const dispatch = useDispatch();
+  const updateTicketList = useStore((state) => state.updateTicketList);
   const [selectedTicket, setSelectedTicket] = useState(null);
 
-  // Function to handle the start of dragging a ticket
   const handleDragStart = (e, ticketId) => {
-    // Find the ticket being dragged by its ID
     const ticket = tickets.find((ticket) => ticket.id === ticketId);
-    // Set the selected ticket if it's not closed
-    // if (ticket.status !== "closed") {
     setSelectedTicket(ticket);
-    // }
   };
 
-  // Function to handle the end of dragging a ticket
   const handleDragEnd = () => {
-    // Clear the selected ticket
     setSelectedTicket(null);
   };
 
-  // Function to handle the drag over event
   const handleDragOver = (e) => {
-    // Prevent default behavior
     e.preventDefault();
   };
 
-  // Function to handle the drop event
   const handleDrop = (e, columnId) => {
-    // Prevent default behavior
     e.preventDefault();
-    // If there's a selected ticket, update its status to the dropped column
     if (selectedTicket) {
-      dispatch(
-        updateTicketList({ ticketId: selectedTicket.id, newStatus: columnId })
-      );
+      updateTicketList(selectedTicket.id, columnId);
     }
   };
 
